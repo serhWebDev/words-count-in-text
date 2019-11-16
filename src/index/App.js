@@ -1,6 +1,7 @@
 import React, {Component, Fragment} from 'react';
 import Navbar from '../components/navbar/index';
 import Table from '../components/table/index';
+import sortBy from '../servece/sorting';
 import './App.css';
 
 class App extends Component {
@@ -9,8 +10,15 @@ class App extends Component {
     this.state = {
       wordsCount: null,
       uniqueWords: null,
-      wordsCollection: []
+      wordsCollection: [],
+      sorting: false
     };
+  }
+
+  changeSorting = async (value) => {
+    this.setState({
+      sorting:value
+    })
   }
 
   wordsCounter = async (text) => {
@@ -55,17 +63,18 @@ class App extends Component {
     const {
       wordsCollection,
       wordsCount,
-      uniqueWords
+      uniqueWords,
+      sorting
     } = this.state;
 
-    const onlyUniqueWords = wordsCollection.filter(el => el.count > 1);
+    const onlyUniqueWords = sortBy(wordsCollection.filter(el => el.count > 1), 'count', sorting);
 
     return (
         <Fragment>
           <Navbar />
           <div className="container">
             <header className="App-header">
-              <h1>{wordsCount ? 'Words counter in text' : 'Please type something...'}</h1>
+              <h1 className={'title'}>{wordsCount ? 'Words counter in text' : 'Please type something...'}</h1>
             </header>
 
             <input
@@ -76,6 +85,11 @@ class App extends Component {
             <p>Words: {wordsCount || 0}</p>
             <p>Unique words: {uniqueWords || 0}</p>
             <hr/>
+
+            <button
+                type="button"
+                className="btn btn-dark btn-sm"
+                onClick={() => this.changeSorting(!sorting)}>Sort by count</button>
             {(onlyUniqueWords.length > 0) && (<Table wordsCollection={onlyUniqueWords} />)}
           </div>
         </Fragment>

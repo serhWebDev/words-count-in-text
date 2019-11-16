@@ -15,8 +15,8 @@ const Table = ({wordsCollection = []}) => (
                 { wordsCollection.length > 0 && wordsCollection.map((word, id) => (
                     <tr
                         key={id}>
-                        <th scope="row">{id+1}</th>
-                        <td><p>{word.word}</p></td>
+                        <th>{id+1}</th>
+                        <td>{word.word}</td>
                         <td>{word.count}</td>
                     </tr>
                 ))}
