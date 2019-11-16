@@ -8,7 +8,7 @@ const Navbar = () => (
                     <a className="nav-link" href="https://github.com/serhiiVek/">my GitHub</a>
                 </li>
                 <li className="nav-item">
-                    <a className="nav-link" href="https://github.com/serhiiVek/">GitHub repo</a>
+                    <a className="nav-link" href="https://github.com/serhiiVek/words-count-in-text">GitHub repo</a>
                 </li>
             </ul>
         </nav>
