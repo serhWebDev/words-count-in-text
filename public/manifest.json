@@ -1,6 +1,6 @@
 {
-  "short_name": "React App",
-  "name": "Create React App Sample",
+  "short_name": "Words counter",
+  "name": "Words counter in text",
   "icons": [
     {
       "src": "favicon.ico",
