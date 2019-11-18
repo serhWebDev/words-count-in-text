@@ -2,6 +2,7 @@ import React, {Component, Fragment} from 'react';
 import Navbar from '../components/navbar/index';
 import Table from '../components/table/index';
 import sortBy from '../servece/sorting';
+import MyChart from '../components/chart/index';
 import './App.css';
 
 class App extends Component {
@@ -90,7 +91,17 @@ class App extends Component {
                 type="button"
                 className="btn btn-dark btn-sm"
                 onClick={() => this.changeSorting(!sorting)}>Sort by count</button>
-            {(onlyUniqueWords.length > 0) && (<Table wordsCollection={onlyUniqueWords} />)}
+            <div className="row">
+
+                <div className="col col-md-6 col-sm-12">
+                    {(onlyUniqueWords.length > 0) && (<Table wordsCollection={onlyUniqueWords} />)}
+                </div>
+                <div className="col col-md-6 col-sm-12">
+                    <MyChart data={onlyUniqueWords} />
+                </div>
+
+            </div>
+
           </div>
         </Fragment>
     );
